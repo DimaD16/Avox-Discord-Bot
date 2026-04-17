@@ -1,0 +1,23 @@
+const Discord = require("discord.js");
+
+module.exports = {
+    name: "guildCreate",
+  
+    async execute(client, guild) {
+
+    const embed = new Discord.MessageEmbed()
+    .setTitle(`Avox vient d'être ajouté sur un serveur !`)
+    .setThumbnail(guild.iconURL({dynamic: true}))
+    .addField(`<:AcrownD:770218444267323432> Propriétaire:`, `${guild.owner}`)
+    .addField(`<:ACard:770217637590335489> Nom du serveur :`, `${guild.name}`)
+    .addField(`<:AIdentifiant:773235467348213800> Identifiant du serveur:`, `${guild.id}`)
+    .addField(`<:AFriends:770217555775324204> Nombre de membres:`, `${guild.memberCount}`)
+    .setColor("GREEN")
+    .setTimestamp()
+    .setFooter(`Merci grâce à toi nous sommes à ${client.guilds.cache.size} serveurs`, client.user.displayAvatarURL())
+
+
+    client.guilds.cache.get('804061137687412777').channels.cache.get('850475422512578620').send(embed)
+
+
+}}

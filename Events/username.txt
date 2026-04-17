@@ -1,0 +1,18 @@
+const Discord = require("discord.js");
+const guild = require("../../models/guild");
+
+
+module.exports = {
+    name: "guildMemberUpdate",
+
+    async execute(oldMember, client, newMember) {
+        const result = true;
+        if (!result) { return; } else {
+
+            if (oldMember.setNickname !== newMember.user.wickname) {
+                const rename = newMember.user.username.replace(/[^a-zA-Z0-9 ]/g, "");
+                newUser.setNickname(rename);
+            }
+        }
+    }
+}

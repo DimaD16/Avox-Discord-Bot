@@ -1,0 +1,46 @@
+const { MessageEmbed, MessageAttachment } = require('discord.js');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
+
+module.exports = {
+    category: "Modération",
+    data: new SlashCommandBuilder()
+        .setName("émojis")
+        .setDescription("Permet d'ajouter des émojis à votre serveur !")
+        .addStringOption(option =>
+            option
+            .setName("type")
+            .setDescription("Par quel moyen voulez-vous ajouter les émojis ?")
+            .addChoice("Lien", "link")
+            .addChoice("Emoji", "emoji")
+            .setRequired(true))
+        .addStringOption(option =>
+            option
+                .setName("emoji")
+                .setDescription("L'emoji à ajouter.")
+                .setRequired(true)),
+
+    async execute(client, interaction) {
+
+        const type = interaction.options.getString("type");
+        const emoji = interaction.options.getString("emoji");
+        
+    if (!URL) {
+        return message.channel.send("T'u n'a pas mis de lien !")
+    }
+
+    const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
+    if (!name) {
+        return message.channel.send("Un erreur est survenue !")
+    }
+    if (name.length < 2 || name > 32) {
+        return message.channel.send("Tu n'a pas mis de nom !")
+    }
+
+    message.guild.emojis
+        .create(URL, name).then(emoji => {
+            message.channel.send(`${emoji} a été ajouté !`)}).catch((err) => { if (err) { return message.channel.send("Un erreur est survenue !"); }})
+        
+
+            
+}}
